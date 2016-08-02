@@ -17,8 +17,8 @@ describe "Store Service" do
     id = 2740
 
     results = StoreService.new.single_store(id)
-    store = results["stores"]
-
+    store = results["stores"].first
+    
     expect(store["longName"]).to eq("Best Buy Mobile - Cherry Creek Shopping Center")
     expect(store["storeType"]).to eq("Mobile")
     expect(store["address"]).to eq("3000 East First Ave")

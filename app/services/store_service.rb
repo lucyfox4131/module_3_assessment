@@ -8,7 +8,7 @@ class StoreService
   end
 
   def single_store(id)
-    https://api.bestbuy.com/v1/stores(storeId=2740)?format=json&apiKey=hhp47b5bvjda7pj44gsauf78&show=longName,storeType,address,city,region,postalCode,hoursAmPm
+    parse(connection.get("/v1/stores(storeId=#{id})", single_store_params))
   end
 
   private
@@ -32,7 +32,9 @@ class StoreService
 
   def single_store_params
     {
-      format: "json"
+      format: "json",
+      show: "longName,storeType,address,city,region,postalCode,hoursAmPm",
+      apiKey: ENV["BEST_BUY_API_KEY"]
     }
   end
 end
