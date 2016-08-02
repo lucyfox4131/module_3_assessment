@@ -17,15 +17,12 @@ RSpec.feature "User searches by zip for stores" do
     expect(page).to have_content("Phone Number: 303-693-0166")
     expect(page).to have_content("Store Type: BigBox")
 
-
+    click_on("Best Buy Mobile - Cherry Creek Shopping Center")
+    
   end
 
 end
 
-#
-# As a user
-# After I have searched a zip code for stores
-# When I click the name of a store
 # Then my current path should be "/stores/:store_id"
 # I should see the store name, store type and address with city, state and zip
 # I should see an unordered list of the store hours in the following format:

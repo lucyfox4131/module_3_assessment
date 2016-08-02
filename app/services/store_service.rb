@@ -20,7 +20,7 @@ class StoreService
   def zip_search_params
     {
       format: "json",
-      show: "longName,city,distance,phone,storeType",
+      show: "longName,city,distance,phone,storeType,storeId",
       apiKey: ENV["BEST_BUY_API_KEY"],
       pageSize: 15
     }
