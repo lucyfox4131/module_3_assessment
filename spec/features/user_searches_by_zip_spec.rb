@@ -18,18 +18,20 @@ RSpec.feature "User searches by zip for stores" do
     expect(page).to have_content("Store Type: BigBox")
 
     click_on("Best Buy Mobile - Cherry Creek Shopping Center")
-    
+
+    expect(current_path).to eq("/stores/2740")
+    expect(page).to have_content("Best Buy Mobile - Cherry Creek Shopping Center")
+    expect(page).to have_content("Store Type: a;sldk")
+    expect(page).to have_content("Location: blah blah address with city, state and zip")
+
+    within("ul") do
+      expect(page).to have_content("Mon: 10am-9pm")
+      expect(page).to have_content("Tue: 10am-9pm")
+      expect(page).to have_content("Wed: 10am-9pm")
+      expect(page).to have_content("Thurs: 10am-9pm")
+      expect(page).to have_content("Fri: 10am-9pm")
+      expect(page).to have_content("Sat: 10am-9pm")
+      expect(page).to have_content("Sun: 11am-6pm")
+    end
   end
-
 end
-
-# Then my current path should be "/stores/:store_id"
-# I should see the store name, store type and address with city, state and zip
-# I should see an unordered list of the store hours in the following format:
-#   * Mon: 10am-9pm
-#   * Tue: 10am-9pm
-#   * Wed: 10am-9pm
-#   * Thurs: 10am-9pm
-#   * Fri: 10am-9pm
-#   * Sat: 10am-9pm
-#   * Sun: 11am-7pm
