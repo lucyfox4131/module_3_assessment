@@ -10,4 +10,8 @@ Rails.application.routes.draw do
       resources :items, only: [:index, :show, :destroy, :create]
     end
   end
+
+  get "/search", to: "search#index"
+
+  resources :stores, only: [:show]
 end

@@ -1,0 +1,15 @@
+<div class="container">
+<h1> <%= @results.first %> Total Stores </h1>
+  <ol>
+    <% @results.second.each do |store| %>
+      <li> <%= link_to store.name, store_path(store.id) %> </li>
+      <ul>
+        <li>City: <%= store.city %> </li>
+        <li>Distance: <%= store.distance %> </li>
+        <li>Phone Number: <%= store.phone %> </li>
+        <li>Store Type: <%= store.type %> </li>
+      </ul>
+
+    <% end %>
+  </ol>
+</div>
