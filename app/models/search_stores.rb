@@ -10,16 +10,18 @@ class SearchStores
     @type       = store["storeType"]
   end
 
+  def self.service
+    StoreService.new
+  end
+
   def self.search_by_zip(zip)
-    results = StoreService.new.stores_by_zip(zip)
+    results = service.stores_by_zip(zip)
     stores = create_new_stores(results)
 
     [results["total"], stores]
   end
 
   def self.create_new_stores(results)
-    results["stores"].map do |store|
-      new(store)
-    end
+    results["stores"].map {|store| new(store)}
   end
 end
