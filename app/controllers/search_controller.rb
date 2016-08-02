@@ -1,6 +1,6 @@
 class SearchController < ApplicationController
 
   def index
-    @stores = Stores.search_by_zip(params["zip"])
+    @results = Stores.search_by_zip(params["zip"])
   end
 end
