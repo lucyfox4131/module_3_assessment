@@ -14,4 +14,18 @@ describe "Items Controller" do
 
     expect(json.first).to eq({"id" => item_1.id, "name" => item_1.name, "description" => item_1.description, "image_url" => item_1.image_url})
   end
+
+  it "should return one item specified by item id" do
+    item_1, item_2 = create_list(:item, 2)
+
+    get "api/v1/items/#{item_1.id}"
+
+    expect(response.status).to eq(200)
+
+    expect(json["id"]).to eq(item_1.id)
+    expect(json["name"]).to eq(item_1.name)
+    expect(json["description"]).to eq(item_1.description)
+    expect(json).to_not include("created_at")
+    expect(json).to_not include("udpated_at")
+  end
 end
