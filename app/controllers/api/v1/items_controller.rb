@@ -8,4 +8,8 @@ class Api::V1::ItemsController < ApiBaseController
   def show
     respond_with Item.find(params['id'])
   end
+
+  def destroy
+    respond_with Item.destroy(params["id"])
+  end
 end
