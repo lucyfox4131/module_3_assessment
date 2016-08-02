@@ -39,4 +39,20 @@ describe "Items Controller" do
     expect(response.status).to eq(204)
     expect(Item.count).to eq(1)
   end
+
+  it "creates a new item" do
+    expect(Item.count).to eq(0)
+    item_params = {name: "New Item Name",
+                  description: "This is the new item description",
+                  image_url: "http://robohash.org/1.png?set=set2&bgset=bg1&size=200x200"}
+
+    post "api/v1/items", {item: item_params}
+
+    expect(response.status).to eq(201)
+    expect(json["name"]).to eq("New Item Name")
+    expect(json["description"]).to eq("This is the new item description")
+    expect(json["image_url"]).to eq("http://robohash.org/1.png?set=set2&bgset=bg1&size=200x200")
+    expect(json).to_not include("created_at")
+    expect(json).to_not include("updated_at")
+  end
 end
