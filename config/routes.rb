@@ -11,5 +11,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/search', to: "search#index"
+  get "/search", to: "search#index"
+
+  resources :stores, only: [:show]
 end

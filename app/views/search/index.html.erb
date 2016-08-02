@@ -2,7 +2,7 @@
 <h1> <%= @results.first %> Total Stores </h1>
   <ol>
     <% @results.second.each do |store| %>
-      <li> <%= store.name %> </li>
+      <li> <%= link_to store.name, store_path(store.id) %> </li>
       <ul>
         <li>City: <%= store.city %> </li>
         <li>Distance: <%= store.distance %> </li>

@@ -1,4 +1,4 @@
-class Stores
+class SearchStores
   attr_reader :id, :name, :city, :distance, :phone, :type
 
   def initialize(store)
