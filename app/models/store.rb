@@ -1,4 +1,5 @@
 class Store
+  attr_reader :name, :type, :hours, :street_address, :city, :state, :zip
 
   def initialize(store)
     @name = store["longName"]
@@ -14,11 +15,15 @@ class Store
     create_new(StoreService.new.single_store(id))
   end
 
-  def self.create_new(store)
+  def self.create_new(results)
     new(results["stores"].first)
   end
 
-  def format_hours
-    # "Mon: 10am-9pm; Tue: 10am-9pm; Wed: 10am-9pm; Thurs: 10am-9pm; Fri: 10am-9pm; Sat: 10am-9pm; Sun: 11am-6pm"
+  def format_hours(hours_string)
+    hours_string.split("; ")
+  end
+
+  def address
+    "#{street_address} #{city}, #{state}, #{zip}"
   end
 end
