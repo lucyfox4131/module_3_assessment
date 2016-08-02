@@ -8,6 +8,16 @@ RSpec.feature "User searches by zip for stores" do
 
     expect(current_path).to eq("/search")
 
+    expect(page).to have_content("Best Buy Mobile - Cherry Creek Shopping Center")
+    expect(page).to have_content("17 Total Stores")
+
+    within(".store15") do
+      expect(page).to have_content("Best Buy - S.E. Aurora")
+      expect(page).to have_content("City: Aurora")
+      expect(page).to have_content("Distance: 18.51")
+      expect(page).to have_content("Phone Number: 303-693-0166")
+      expect(page).to have_content("Store Type: BigBox")
+    end
   end
 # And I should see stores within 25 miles of 80202
 # And I should see a message that says "17 Total Stores"
