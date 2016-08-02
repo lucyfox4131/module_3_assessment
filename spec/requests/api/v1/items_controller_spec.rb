@@ -28,4 +28,15 @@ describe "Items Controller" do
     expect(json).to_not include("created_at")
     expect(json).to_not include("udpated_at")
   end
+
+  it "should delete item by id" do
+    item_1, item_2 = create_list(:item, 2)
+
+    expect(Item.count).to eq(2)
+
+    delete "api/v1/items/#{item_1.id}"
+
+    expect(response.status).to eq(204)
+    expect(Item.count).to eq(1)
+  end
 end
