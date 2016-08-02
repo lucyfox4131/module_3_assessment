@@ -8,8 +8,10 @@ describe "Items Controller" do
 
     expect(response.status).to eq(200)
 
-    expect(json).to include(item_1.name)
-    expect(json).to include(item_2.name)
-    expect(json).to include(item_3.name)
+    expect(json.first['name']).to eq(item_1.name)
+    expect(json.first["name"]).to eq(item_2.name)
+    expect(json.first["name"]).to eq(item_3.name)
+
+    expect(json.first).to eq({"id" => item_1.id, "name" => item_1.name, "description" => item_1.description, "image_url" => item_1.image_url})
   end
 end
